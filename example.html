@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="module" src="./ribbon/js/ribbon.js"></script>
+    <style>
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #222222;
+        }
+
+        #ribbon {
+
+        }
+
+        #ribbon button,
+        #ribbon li {
+            cursor: pointer;
+        }
+        #ribbon li {
+            padding: .2em .4em;
+        }
+
+        #ribbon .tools button:hover,
+        #ribbon li:hover {
+            background-color: #D2D2D2;
+        }
+
+        #ribbon * {
+            all: unset;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            font-size: 16px;
+            line-height: 1.2em;
+            user-select: none;
+            white-space: nowrap
+        }
+
+        /*#ribbon header:before {*/
+        /*    z-index: -1;*/
+        /*    position: absolute;*/
+        /*    transform: translate(-1em, 0);*/
+        /*    width: 100%;*/
+        /*    padding: .3em;*/
+        /*    height: 1em;*/
+        /*    content: "";*/
+        /*    background-color: #0A88F0;*/
+        /*}*/
+
+        #ribbon header {
+            display: flex;
+            justify-content: space-between;
+            min-width: 100%;
+            padding: .15em 1em;
+            margin: auto;
+
+            background-color: #0A88F0;
+            color: snow;
+
+            align-items: center;
+        }
+
+        #ribbon header button {
+            position: relative;
+            min-width: 1em;
+            min-height: 1em;
+            line-height: 1.15em;
+        }
+
+        #ribbon header img {
+            object-fit: contain;
+            width: 1em;
+            height: 1em;
+            filter: invert(100%) ;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -80%);
+        }
+
+        #ribbon header button {
+            min-width: 1.5em;
+            text-align: center;
+            padding: .2em;
+        }
+
+        #ribbon header button:hover {
+            background-color: #0770c7;
+        }
+
+        #ribbon .tabs {
+            width: 100%;
+            display: flex;
+
+            background-color: #0A88F0;
+            color: snow;
+            align-items: center;
+            overflow: auto;
+        }
+
+        #ribbon .tabs button:hover {
+            background-color: #0770c7;
+        }
+
+
+        #ribbon button {
+            padding: .4em 1em;
+        }
+
+        #ribbon .tabs button.active {
+            background-color: snow;
+            color: #0A88F0;
+        }
+
+        #ribbon .tools {
+            display: block;
+            width: 100%;
+
+            background-color: snow;
+        }
+
+        #ribbon .tools {
+            display: flex;
+            height: 7.2em;
+            padding: .5em 0;
+            overflow: auto;
+        }
+
+        #ribbon .tools .group {
+            padding: 0 1em;
+            border-right: 1px solid black;
+        }
+
+        #ribbon .tools > :first-child {
+            padding-left: 0;
+        }
+
+        #ribbon .tools ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #ribbon .search {
+
+        }
+
+        #ribbon .search label {
+        }
+
+        #ribbon .search input {
+            padding: .2em;
+        }
+
+        #ribbon .search input:hover {
+            background-color: #e8e8ff;
+            color: darkblue;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<article id="ribbon">
+    <header>
+        <div class="file-controls">
+            <button><img src="ribbon/icon/save.svg" alt="save"></button>
+            <button><img src="ribbon/icon/rotating-arrow.svg" alt="save"></button>
+            <button><img src="ribbon/icon/rotating-arrow.svg" alt="save"></button>
+        </div>
+        <h2>Dokumenten Titel</h2>
+        <div class="window-controls">
+            <button>A</button>
+            <button>B</button>
+            <button>C</button>
+        </div>
+    </header>
+    <section class="tabs">
+        <button>Datei</button>
+        <button class="active">Start</button>
+        <button>Einfügen</button>
+        <button>Entwurf</button>
+        <button>Layout</button>
+        <button>Referenzen</button>
+        <button>Sendungen</button>
+        <button>Überprüfen</button>
+        <button>Ansicht</button>
+        <button>Entwicklertools</button>
+        <button>Hilfe</button>
+        <div class="search">
+            <label><input value="Suchen Sie etwas?"></label>
+        </div>
+    </section>
+    <section class="tools">
+        <div class="group">
+            <button>Click</button>
+        </div>
+        <div class="group">
+            <ul>
+                <li>Element 1</li>
+                <li>Element 2</li>
+                <li>Element 3</li>
+            </ul>
+        </div>
+        <div class="group">
+            <ul>
+                <li>Element 1</li>
+                <li>Element 2</li>
+                <li>Element 3</li>
+            </ul>
+        </div>
+        <div class="group">
+            <ul>
+                <li>Element 1</li>
+                <li>Element 2</li>
+                <li>Element 3</li>
+            </ul>
+        </div>
+    </section>
+    <!--    <section class="announcement"></section>-->
+</article>
+
+</body>
+</html>
