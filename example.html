@@ -76,10 +76,6 @@
             width: 1em;
             height: 1em;
             filter: invert(100%) ;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -80%);
         }
 
         #ribbon header button {
@@ -154,7 +150,7 @@
         #ribbon .search input {
             padding: .2em;
         }
-
+        
         #ribbon .search input:hover {
             background-color: #e8e8ff;
             color: darkblue;
@@ -169,14 +165,14 @@
     <header>
         <div class="file-controls">
             <button><img src="ribbon/icon/save.svg" alt="save"></button>
-            <button><img src="ribbon/icon/rotating-arrow.svg" alt="save"></button>
-            <button><img src="ribbon/icon/rotating-arrow.svg" alt="save"></button>
+            <button><img style="transform: rotate(-90deg)" src="ribbon/icon/arrow-back.svg" alt="arrow back"></button>
+            <button><img src="ribbon/icon/rotating-arrow-left.svg" alt="rotating arrow left"></button>
         </div>
         <h2>Dokumenten Titel</h2>
         <div class="window-controls">
-            <button>A</button>
-            <button>B</button>
-            <button>C</button>
+            <button><img src="ribbon/icon/compress-solid.svg" alt="compress solid"></button>
+            <button><img src="ribbon/icon/window-minimize-solid.svg" alt="window minimize solid"></button>
+            <button><img src="ribbon/icon/xmark-solid.svg" alt="xmark solid"></button>
         </div>
     </header>
     <section class="tabs">
