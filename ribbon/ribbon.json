@@ -1,0 +1,81 @@
+{
+  "title": "Dokumententitel",
+  "tabs": [
+    {
+      "id": "datei",
+      "title": "Datei",
+      "toolGroups": [
+        {
+          "id": "selectables",
+          "title": "Selectables",
+          "tools": [
+            {
+              "id": "#pointer",
+              "type": "button",
+              "value": "Zeiger"
+            },
+            {
+              "id": "#pointer-2",
+              "type": "button",
+              "value": "Zeiger"
+            }
+          ]
+        },
+        {
+          "id": "selectables-2",
+          "title": "Selectables",
+          "tools": [
+            {
+              "id": "#pointer",
+              "type": "button",
+              "value": "Zeiger"
+            },
+            {
+              "id": "#pointer-2",
+              "type": "button",
+              "value": "Zeiger"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "start",
+      "title": "Start",
+      "toolGroups": [
+        {
+          "id": "selectables-3",
+          "title": "Selectables",
+          "tools": [
+            {
+              "id": "#pointer",
+              "type": "button",
+              "value": "Zeiger"
+            },
+            {
+              "id": "#pointer-3",
+              "type": "button",
+              "value": "Zeiger"
+            }
+          ]
+        },
+        {
+          "id": "selectables-4",
+          "title": "Selectables",
+          "tools": [
+            {
+              "id": "#pointer",
+              "type": "button",
+              "value": "Zeiger"
+            },
+            {
+              "id": "#pointer-2",
+              "type": "button",
+              "value": "Zeiger"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

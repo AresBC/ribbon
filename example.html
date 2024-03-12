@@ -21,6 +21,7 @@
         #ribbon li {
             cursor: pointer;
         }
+
         #ribbon li {
             padding: .2em .4em;
         }
@@ -75,7 +76,7 @@
             object-fit: contain;
             width: 1em;
             height: 1em;
-            filter: invert(100%) ;
+            filter: invert(100%);
         }
 
         #ribbon header button {
@@ -150,6 +151,7 @@
         #ribbon .search input {
             padding: .2em;
         }
+
         
         #ribbon .search input:hover {
             background-color: #e8e8ff;
@@ -219,6 +221,166 @@
     </section>
     <!--    <section class="announcement"></section>-->
 </article>
+
+<script type="module">
+
+    (async function () {
+        "use strict"
+
+        class Header {
+            #htmlElement = null
+
+            constructor(htmlElement) {
+                this.#htmlElement = htmlElement
+            }
+        }
+
+        class BaseElement {
+            _htmlElement = null
+
+            constructor(htmlElement) {
+                this._htmlElement = htmlElement
+            }
+
+            classList = {
+                remove: (name) => {
+                    this._htmlElement.classList.remove(name)
+                },
+                add: (name) => {
+                    this._htmlElement.classList.add(name)
+                },
+            }
+
+            addEventListener(event, func) {
+                this._htmlElement.addEventListener(event, func)
+            }
+        }
+
+        class Tab extends BaseElement {
+            #htmlElement = null
+            #toolGroups = []
+            constructor(htmlElement) {
+                super(htmlElement)
+            }
+
+            #update(isVisible) {
+                for (const toolGroup of this.#toolGroups) {
+                    toolGroup.show()
+                }
+            }
+
+        }
+
+        class ToolGroup extends BaseElement {
+            show() {
+                super._htmlElement.style.visibility = '0'
+            }
+        }
+
+        class Tabs {
+            #htmlElement = null
+            #tabs = null
+            #search = null
+
+            constructor(htmlElement) {
+                this.#htmlElement = htmlElement
+                this.#tabs = this.#queryTabs(this.#htmlElement)
+                this.#search = this.#querySearchOrNull(this.#htmlElement)
+                this.#initEvents(this.#tabs)
+            }
+
+            #queryTabs(tabElement) {
+                const tabElements = Array.from(tabElement.querySelectorAll('button'))
+                const tabs = []
+                for (const tabElement of tabElements) {
+                    tabs.push(new Tab(tabElement))
+                }
+
+                return tabs
+            }
+
+
+            #querySearchOrNull(tabElement) {
+                const search = tabElement.querySelector('.search')
+
+                return search instanceof HTMLElement ? search : null
+            }
+
+            #initEvents(tabs) {
+                for (const tab of tabs) {
+                    tab.addEventListener('click', event => this.#onClick(tab))
+                }
+            }
+
+            #onClick(tab) {
+                this.#activateTab(tab)
+            }
+
+            #activateTab(tab) {
+                this.#tabs.forEach(tab => tab.classList.remove('active'))
+                tab.classList.add('active')
+            }
+        }
+
+        class Tools {
+            #htmlElement = null
+
+            constructor(htmlElement) {
+                this.#htmlElement = htmlElement
+            }
+        }
+
+        class Ribbon {
+            #htmlElement = null
+            #header = null
+            #tabs = null
+            #tools = null
+
+            constructor({htmlElement, header, tabs, tools}) {
+                this.#htmlElement = htmlElement
+                this.#header = header
+                this.#tabs = tabs
+                this.#tools = tools
+            }
+        }
+
+        class RibbonFactory {
+            async create(separator, config) {
+
+                const ribbonElement = document.querySelector(separator)
+
+                const headerElement = ribbonElement.querySelector('header')
+                const header = new Header(headerElement)
+
+                const tabsElement = ribbonElement.querySelector('.tabs')
+                const tabs = new Tabs(tabsElement)
+
+                const toolsElement = ribbonElement.querySelector('.tools')
+                const tools = new Tools(toolsElement)
+
+                return new Ribbon({
+                    header, tabs, tools, config,
+                    htmlElement: ribbonElement,
+                })
+
+            }
+        }
+
+        const config = await (async function () {
+            const result = await fetch('./ribbon/ribbon.json')
+            return await result.json()
+        })()
+
+        console.log(config)
+
+        const ribbon = await (new RibbonFactory).create('#ribbon', config)
+
+        console.log(ribbon)
+
+    })()
+
+
+</script>
 
 </body>
 </html>
